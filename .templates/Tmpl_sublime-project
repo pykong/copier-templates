@@ -1,0 +1,67 @@
+{
+	"build_systems": [
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"${folder}/.venv/bin/python\" -u \"$file\""
+		}
+	],
+	"folders": [
+		{
+            [% block folders %]
+			"follow_symlinks": true,
+			"path": ".",
+            "file_exclude_patterns": [
+                "*.hidden",
+                ".eslintrc.js",
+                ".flowconfig",
+                ".coverage",
+                ".coveragerc"
+            ]
+            [% endblock %]
+		}
+	],
+	"settings": {
+        [% block settings %]
+		"LSP": {
+			"mspyls": {
+				"enabled": false,
+				"initializationOptions": {
+					"interpreter": {
+						"properties": {
+							"InterpreterPath": "${folder}/.venv/bin/python",
+							"UseDefaultDatabase": true,
+							"Version": "3.7"
+						}
+					}
+				}
+			},
+			"pyls": {
+				"command": [
+					"${folder}/.venv/bin/pyls"
+				],
+				"enabled": false,
+				"initializationOptions": {
+					"interpreter": {
+						"properties": {
+							"InterpreterPath": "${folder}/.venv/bin/python",
+							"UseDefaultDatabase": true,
+							"Version": "3.7"
+						}
+					}
+				}
+			}
+		},
+		"SublimeLinter.linters.flake8.executable": "${folder}/.venv/bin/flake8",
+		"SublimeLinter.linters.mypy.executable": "${folder}/.venv/bin/mypy",
+        "SublimeLinter.linters.eslint.executable": "${folder}/node_modules/.bin/eslint",
+		"SublimeLinter.linters.flow.executable": "${folder}/node_modules/.bin/flow",
+		"SublimeLinter.linters.pug-lint.executable": "${folder}/node_modules/.bin/pug-lint",
+		"SublimeLinter.linters.sass-lint.executable": "${folder}/node_modules/.bin/sass-lint",
+		"python_interpreter": "${folder}/.venv/bin/python",
+		"sublack.black_command": "${folder}/.venv/bin/black",
+        "test_command": "pytest --cov=."
+        [% endblock %]
+	}
+}
