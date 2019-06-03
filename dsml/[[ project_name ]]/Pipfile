@@ -1,0 +1,12 @@
+[% extends "Pipfile.tmpl" %]
+
+[% block dev %]
+[% endblock %]
+
+[% block prod %]
+pandas = "*"
+keras-pandas = "*"
+keras = "*"
+bokeh = "*"
+pandas-bokeh = "*"
+[% endblock %]

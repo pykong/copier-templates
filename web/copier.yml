@@ -1,0 +1,13 @@
+project_name: "NewWebProject"
+
+_tasks:
+    - cd [[ project_name ]] && git init
+    - cd [[ project_name ]] && pipenv install --pre --dev    
+    - cd [[ project_name ]] && pipenv run nodeenv -pc
+    - cd [[ project_name ]] && pipenv run npm install
+    - cd [[ project_name ]] && pipenv run eslint --init
+    #- cd [[ project_name ]] && pipenv run flow init
+    - subl --add --project ./[[ project_name ]]/[[ project_name ]].sublime-project 
+    - fish -c "cd ./[[ project_name ]]"
+    
+

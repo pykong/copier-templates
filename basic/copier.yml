@@ -1,0 +1,8 @@
+project_name: "NewBasicProject"
+
+_tasks:
+    - cd [[ project_name ]] && git init
+    - cd [[ project_name ]] && pipenv install --pre --dev
+    - subl --add --project ./[[ project_name ]]/[[ project_name ]].sublime-project   
+    - fish -c "cd ./[[ project_name ]]"
+
