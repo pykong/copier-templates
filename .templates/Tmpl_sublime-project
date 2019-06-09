@@ -23,7 +23,7 @@
 		}
 	],
 	"settings": {
-        [% block settings %]
+     
 		"LSP": {
 			"mspyls": {
 				"enabled": false,
@@ -53,15 +53,12 @@
 				}
 			}
 		},
+        [% block executables %]
 		"SublimeLinter.linters.flake8.executable": "${folder}/.venv/bin/flake8",
 		"SublimeLinter.linters.mypy.executable": "${folder}/.venv/bin/mypy",
-        "SublimeLinter.linters.eslint.executable": "${folder}/node_modules/.bin/eslint",
-		"SublimeLinter.linters.flow.executable": "${folder}/node_modules/.bin/flow",
-		"SublimeLinter.linters.pug-lint.executable": "${folder}/node_modules/.bin/pug-lint",
-		"SublimeLinter.linters.sass-lint.executable": "${folder}/node_modules/.bin/sass-lint",
-		"python_interpreter": "${folder}/.venv/bin/python",
-		"sublack.black_command": "${folder}/.venv/bin/black",
+	    "sublack.black_command": "${folder}/.venv/bin/black",
+        "python_interpreter": "${folder}/.venv/bin/python",	
         "test_command": "pytest --cov=."
-        [% endblock %]
+        [% endblock %]        
 	}
 }

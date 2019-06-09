@@ -1,13 +1,12 @@
-project_name: "NewWebProject"
+_extra_paths:
+- ~/Projects/.templates/.templates/
 
 _tasks:
-    - cd [[ project_name ]] && git init
-    - cd [[ project_name ]] && pipenv install --pre --dev    
-    - cd [[ project_name ]] && pipenv run nodeenv -pc
-    - cd [[ project_name ]] && pipenv run npm install
-    - cd [[ project_name ]] && pipenv run eslint --init
-    #- cd [[ project_name ]] && pipenv run flow init
-    - subl --add --project ./[[ project_name ]]/[[ project_name ]].sublime-project 
-    - fish -c "cd ./[[ project_name ]]"
-    
+- wget https://www.gitignore.io/api/sublimetext,python,sass -O .gitignore
+- git init
+- pipenv install --pre --dev
+- pipenv run nodeenv -pc
+- pipenv run npm install
+- subl --add --project ./[[ folder_name ]].sublime-project
+- fish -c "cd ."
 

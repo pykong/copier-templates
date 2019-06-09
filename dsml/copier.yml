@@ -1,10 +1,9 @@
-project_name: "BasicProject"
-
 _tasks:
-    - cd [[ project_name ]] && git init
-    - cd [[ project_name ]] && pipenv install --pre --dev    
-    - cd [[ project_name ]] && pipenv run nodeenv -pc
-    - cd [[ project_name ]] && pipenv run npm init
-    - fish -c "cd ./[[ project_name ]]"
-    - subl --new-window --project ./[[ project_name ]]/[[ project_name ]].sublime-project  
+    - git init
+    - pipenv install --pre --dev    
+    - pipenv run nodeenv -pc
+    - pipenv run npm init
+    - subl --new-window --project ./[[ folder_name ]].sublime-project
+    - fish -c "cd ."
+
 

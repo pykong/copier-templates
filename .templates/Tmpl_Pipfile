@@ -21,6 +21,7 @@ pytest = "*"
 pytest-cov = "*"
 pytest-sugar = "*"
 radon = "*"
+autoflake = "*"
 [% block dev %][% endblock %]
 
 [packages]
