@@ -1,3 +1,6 @@
+_extra_paths:
+- ~/Projects/.templates/.templates/
+
 _tasks:
     - git init
     - pipenv install --pre --dev    
