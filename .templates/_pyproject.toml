@@ -1,0 +1,91 @@
+[tool.poetry]
+name = "awesome_proj" # [[folder_name]]
+version = "0.1.0"
+description = "Random proj" # [[project_description]]
+license = "MIT"
+authors = ["Ben Felder <ben@felder.io>"]
+
+    [tool.poetry.dependencies]
+    python = "^3.8"
+    [% block dependencies %][% endblock %]
+
+    [tool.poetry.dev-dependencies]
+    mypy = "*"
+
+    # flake8
+    flake8 = "*"
+    flake8-annotations-coverage = "*"
+    flake8-blind-except = "*"
+    flake8-comprehensions = "*"
+    flake8-debugger = "*"
+    flake8-docstrings = "*"
+    flake8-eradicate = "*"
+    pep8-naming = "*"
+    wemake-python-styleguide = "*"
+    darglint = "*"
+
+    # formatting
+    black = "19.3b0"
+    blacken-docs = "*"
+    docformatter = "*"
+    isort = "*"
+    seed-isort-config = "*"    
+
+    # pytest
+    pytest = "*"
+    pytest-cov = "*"
+    pytest-monkeytype = "*"
+    pytest-mypy = "*"
+    pytest-picked = "*"
+    pytest-print = "*"
+    pytest-sugar = "*"
+    pytest-xdist = "*"
+
+    # other
+    radon = "*"
+    cohesion = "*"
+    vulture = "*"
+
+    # pre-commit
+    pre-commit = "*"
+    pygments-pre-commit = "*"
+
+    # custom
+    [% block dev_dependencies %][% endblock %]
+
+[tool.isort]
+line_length = 88
+combine_star = true
+known_third_party = []
+
+[tool.black]
+line-length = 88
+target_version = ['py38']
+
+[flake8]
+ignore = ['D100','D101','D102','D103','D107','Q000','Z306']
+exclude = ['.git','__pycache__','docs/source/conf.py','old','build','dist']
+max-complexity = 10
+max-line-length = 88
+
+[mypy]
+check_untyped_defs = true
+# disallow_subclassing_any = true
+ignore_missing_imports = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+
+# http://doc.pytest.org/en/latest/customize.html#adding-default-options
+[tool.pytest]
+addopts = "--mypy"
+
+# [coverage:run]
+# omit = "*/test/*"
+
+[tool.poetry.scripts]
+format = "scripts:format"
+lint = "scripts:lint"
+test = "scripts:test"

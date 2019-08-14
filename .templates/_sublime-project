@@ -1,0 +1,29 @@
+{
+	"build_systems": [
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"${folder}/.venv/bin/python\" -u \"$file\""
+		}
+	],
+	"folders": [
+		{
+            "follow_symlinks": true,
+			"path": ".",
+            "file_exclude_patterns": [
+                "*.hidden",
+                ".eslintrc.js",
+                ".flowconfig"
+            ]
+		}
+	],
+	"settings": {
+        [% block settings %]
+        "SublimeLinter.linters.flake8.executable": "${folder}/.venv/bin/flake8",
+		"SublimeLinter.linters.mypy.executable": "${folder}/.venv/bin/mypy",
+	    "sublack.black_command": "${folder}/.venv/bin/black",
+        "python_interpreter": "${folder}/.venv/bin/python"
+        [% endblock %]
+	}
+}

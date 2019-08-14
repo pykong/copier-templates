@@ -1,0 +1,59 @@
+-   repo: meta
+    hooks:
+    -   id: check-hooks-apply
+    -   id: check-useless-excludes
+
+-   repo: git@github.com:Yelp/detect-secrets
+    rev: stable
+    hooks:
+    -   id: detect-secrets
+        args: [--baseline, .secrets.baseline]
+        exclude: .*/tests/.*
+
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: stable
+    hooks:
+    -   id: python-bandit-vulnerability-check
+        stages: [push]
+
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: stable
+    hooks:
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: check-case-conflict
+    -   id: check-added-large-files
+    -   id: check-vcs-permalinks
+    -   id: forbid-new-submodules
+    -   id: no-commit-to-branch
+        args:   [--branch, master]
+
+# https://jorisroovers.github.io/gitlint/rules/
+-   repo: https://github.com/jorisroovers/gitlint
+    rev: stable
+    hooks:
+    -   id: gitlint
+        args:   [--contrib=contrib-title-conventional-commits, CT1]
+
+# https://pre-commit.com/#repository-local-hooks
+-   repo: local
+    hooks:
+    -   id: lock_deps
+        name: LockDependencies
+        entry: poetry lock
+        language: system
+        stages: [push]
+    -   id: format
+        name: Format
+        entry: poetry run format
+        language: system
+    -   id: lint
+        name: Lint
+        entry: poetry run lint
+        language: system
+    -   id: run_tests
+        name: RunTests
+        entry:  poetry run run_tests
+        language: system
+
+[% block custom %][% endblock %]

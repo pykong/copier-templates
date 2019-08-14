@@ -1,12 +1,14 @@
 _extra_paths:
-- ~/Projects/.templates/.templates/
+    - ~/Projects/.templates/.templates/
 
 _tasks:
-- wget https://www.gitignore.io/api/sublimetext,python,sass -O .gitignore
-- git init
-- pipenv install --pre --dev
-- pipenv run nodeenv -pc
-- pipenv run npm install
-- subl --add --project ./[[ folder_name ]].sublime-project
-- fish -c "cd ."
+    - wget https://www.gitignore.io/api/sublimetext,python,sass -O .gitignore
+    - git init
+    - poetry install --no-interaction
+    - poetry run pre-commit autoupdate
+    - poetry run pre-commit install
+    - poetry run nodeenv -pc
+    - poetry run npm install
+    - subl --add --project ./[[ folder_name ]].sublime-project
+    - fish -c "cd ."
 
