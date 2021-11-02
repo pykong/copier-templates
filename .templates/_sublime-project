@@ -21,6 +21,7 @@
 	"settings": {
         [% block settings %]
         "SublimeLinter.linters.flake8.executable": "${folder}/.venv/bin/flake8",
+        "SublimeLinter.linters.flake8.args": ["--config", "pyproject.toml"],
 		"SublimeLinter.linters.mypy.executable": "${folder}/.venv/bin/mypy",
 	    "sublack.black_command": "${folder}/.venv/bin/black",
         "python_interpreter": "${folder}/.venv/bin/python"

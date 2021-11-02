@@ -1,3 +1,5 @@
+# good config-example: https://github.com/pykong/copier/blob/master/.pre-commit-config.yaml
+
 -   repo: meta
     hooks:
     -   id: check-hooks-apply
@@ -9,6 +11,17 @@
     -   id: detect-secrets
         args: [--baseline, .secrets.baseline]
         exclude: .*/tests/.*
+
+-   repo: https://github.com/asottile/yesqa
+    rev: v1.3.0
+    hooks:
+    -   id: yesqa
+
+-   repo: https://github.com/PyCQA/prospector
+    rev: stable
+    hooks:
+    -   id: prospector
+        args:   [--strictness, veryhigh]
 
 -   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
     rev: stable

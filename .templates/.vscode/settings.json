@@ -1,0 +1,18 @@
+{
+    "editor.wordWrapColumn": 88,
+    "python.dataScience.changeDirOnImportExport": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=88",
+        "--ignore=E402,F841,F401,E302,E305",
+    ],
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "${workspaceFolder}/.venv/bin/black",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "${workspaceFolder}/.venv/bin/pflake8",
+    "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestPath": "${workspaceFolder}/.venv/bin/pytest"
+}

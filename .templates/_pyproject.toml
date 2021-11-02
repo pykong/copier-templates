@@ -6,7 +6,7 @@ license = "MIT"
 authors = ["Ben Felder <ben@felder.io>"]
 
     [tool.poetry.dependencies]
-    python = "^3.8"
+    python = "^3.10"
     [% block dependencies %][% endblock %]
 
     [tool.poetry.dev-dependencies]
@@ -14,12 +14,28 @@ authors = ["Ben Felder <ben@felder.io>"]
 
     # flake8
     flake8 = "*"
+    # https://github.com/csachs/pyproject-flake8
+    pyproject-flake8 = "*"
+    # https://github.com/DmytroLitvinov/awesome-flake8-extensions
     flake8-annotations-coverage = "*"
     flake8-blind-except = "*"
+    flake8-builtins = "*"
+    flake8-colors = "*"
+    flake8-comments = "*"
     flake8-comprehensions = "*"
     flake8-debugger = "*"
+    flake8-deprecated = "*"
     flake8-docstrings = "*"
+    flake8-encodings = "*"
     flake8-eradicate = "*"
+    flake8-executable = "*"
+    flake8-literal = "*"
+    flake8-mutable = "*"
+    flake8-raise = "*"
+    flake8-self = "*"
+    flake8-simplify = "*"
+    flake8-super = "*"
+    flake8-use-fstring = "*"
     pep8-naming = "*"
     wemake-python-styleguide = "*"
     darglint = "*"
@@ -29,11 +45,17 @@ authors = ["Ben Felder <ben@felder.io>"]
     blacken-docs = "*"
     docformatter = "*"
     isort = "*"
-    seed-isort-config = "*"    
+    seed-isort-config = "*"
 
     # pytest
     pytest = "*"
+    pytest-annotate = "*"
+    pytest-benchmark = "*"
+    pytest-check = "*"
     pytest-cov = "*"
+    pytest-deadfixtures = "*"
+    pytest-flakefinder = "*"
+    pytest-leaks = "*"
     pytest-monkeytype = "*"
     pytest-mypy = "*"
     pytest-picked = "*"
@@ -41,14 +63,21 @@ authors = ["Ben Felder <ben@felder.io>"]
     pytest-sugar = "*"
     pytest-xdist = "*"
 
-    # other
-    radon = "*"
-    cohesion = "*"
-    vulture = "*"
-
     # pre-commit
     pre-commit = "*"
     pygments-pre-commit = "*"
+
+    # other
+    better_exceptions = "*"
+    cohesion = "*"
+    flynt = "*"
+    radon = "*"
+    typejudge = "*"
+    unimport = "*"
+    vulture = "*"
+    wily = "*"
+    pybetter = "*"
+    mutmut = "*"
 
     # custom
     [% block dev_dependencies %][% endblock %]
@@ -56,31 +85,39 @@ authors = ["Ben Felder <ben@felder.io>"]
 [tool.isort]
 line_length = 88
 combine_star = true
+# interoperability with black
+include_trailing_comma = true
+multi_line_output = 3
 known_third_party = []
 
 [tool.black]
 line-length = 88
 target_version = ['py38']
 
-[flake8]
+[tool.flake8]
 ignore = ['D100','D101','D102','D103','D107','Q000','Z306']
 exclude = ['.git','__pycache__','docs/source/conf.py','old','build','dist']
 max-complexity = 10
 max-line-length = 88
 
 [mypy]
-check_untyped_defs = true
-# disallow_subclassing_any = true
-ignore_missing_imports = true
+# https://mypy.readthedocs.io/en/latest/command_line.html
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+# disallow_untyped_calls = true
+# disallow_untyped_decorators = true
+# disallow_untyped_defs = true
+strict_equality = true
+warn_redundant_casts = true
 warn_return_any = true
 warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
-warn_redundant_casts = true
 
 # http://doc.pytest.org/en/latest/customize.html#adding-default-options
 [tool.pytest]
-addopts = "--mypy"
+addopts = "--mypy --dead-fixtures"
 
 # [coverage:run]
 # omit = "*/test/*"

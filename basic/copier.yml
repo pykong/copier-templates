@@ -9,3 +9,5 @@ _tasks:
     - poetry run pre-commit install
     - subl --add --project ./[[ folder_name ]].sublime-project  
     - fish -C "cd ."
+    - poetry run pre-commit install --hook-type pre-push
+
