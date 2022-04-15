@@ -92,7 +92,7 @@ known_third_party = []
 
 [tool.black]
 line-length = 88
-target_version = ['py38']
+target_version = ['py310']
 
 [tool.flake8]
 ignore = ['D100','D101','D102','D103','D107','Q000','Z306']
@@ -100,7 +100,8 @@ exclude = ['.git','__pycache__','docs/source/conf.py','old','build','dist']
 max-complexity = 10
 max-line-length = 88
 
-[mypy]
+[tool.mypy]
+python_version = "3.10"
 # https://mypy.readthedocs.io/en/latest/command_line.html
 disallow_any_generics = true
 disallow_incomplete_defs = true
